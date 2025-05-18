@@ -1,4 +1,5 @@
 from flask import Blueprint, request, render_template
+from app.waqi import fetch_aqi
 
 bp = Blueprint("core", __name__)
 
@@ -7,5 +8,6 @@ def index():
     result = None
     if request.method == "POST":
         city = request.form.get("city", "").strip()
-        result = f"You entered: {city}"  # Temporary response
+        if city:
+            result = fetch_aqi(city)
     return render_template("index.html", result=result)

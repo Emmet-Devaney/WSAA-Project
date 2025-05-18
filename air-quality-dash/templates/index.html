@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
 <head><title>Air Quality Dash</title></head>
@@ -9,7 +10,14 @@
   </form>
 
   {% if result %}
-    <p>{{ result }}</p>
+    {% if result.error %}
+      <p style="color:red;">Error: {{ result.error }}</p>
+    {% else %}
+      <p><strong>City:</strong> {{ result.city }}</p>
+      <p><strong>AQI:</strong> {{ result.aqi }}</p>
+      <p><strong>Main Pollutant:</strong> {{ result.pollutant }}</p>
+      <p><strong>Time:</strong> {{ result.time }}</p>
+    {% endif %}
   {% endif %}
 </body>
 </html>
