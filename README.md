@@ -4,8 +4,6 @@ The aim here is to build a Flask-based web application that allows users to quer
 
 -----------------------
 
-# From: 
-
 
 ## The App so Far:
 - Flask app
@@ -25,3 +23,23 @@ $Env:FLASK_APP = "run.py"
 flask run
 
 ```
+
+
+# AQI Lookup
+
+Users can now enter a city name to see:
+
+- Air Quality Index (AQI)
+- Dominant pollutant
+- Measurement timestamp
+
+
+## Environment Setup
+
+Create a `.env` file:
+
+```env
+WAQI_API_TOKEN=your_token_here
+
+```
+
