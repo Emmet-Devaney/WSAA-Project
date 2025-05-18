@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head><title>Air Quality Dash</title></head>
+<body>
+  <h1>Air Quality Dashboard</h1>
+  <form method="post">
+    <input name="city" placeholder="Enter city name">
+    <button type="submit">Check AQI</button>
+  </form>
+
+  {% if result %}
+    <p>{{ result }}</p>
+  {% endif %}
+</body>
+</html>
