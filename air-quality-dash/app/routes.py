@@ -1,5 +1,5 @@
-from flask import Blueprint, request, render_template
-from app.waqi import fetch_aqi
+from flask import Blueprint, request, render_template, jsonify
+from app.waqi import fetch_aqi, search_stations
 
 bp = Blueprint("core", __name__)
 
@@ -11,3 +11,8 @@ def index():
         if city:
             result = fetch_aqi(city)
     return render_template("index.html", result=result)
+
+@bp.get("/search")
+def search():
+    q = request.args.get("q", "").strip()
+    return jsonify(search_stations(q)), 200

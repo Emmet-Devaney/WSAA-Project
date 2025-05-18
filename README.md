@@ -43,3 +43,19 @@ WAQI_API_TOKEN=your_token_here
 
 ```
 
+### Add CLI Search and README**
+
+> Files added:  
+`cli_lookup.py`, `README.md`
+
+# CLI Lookup Tool
+A terminal-based tool `cli_lookup.py` is included to let users search for air quality stations using WAQI's search feature.
+
+I may add this to the webpage
+
+### Usage
+```bash
+python cli_lookup.py
+```
+
+
