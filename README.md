@@ -59,3 +59,20 @@ python cli_lookup.py
 ```
 
 
+---
+
+### Polish the Webpage
+
+> Files added:  
+`static/style.css`
+
+
+# More Aesthetic Design
+
+- Added basic CSS in `static/style.css` for cleaner visuals.
+- Added project metadata files for clarity.
+
+## Changes
+- `style.css` adds padding, fonts, and better layout
+
+

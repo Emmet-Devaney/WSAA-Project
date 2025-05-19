@@ -1,23 +1,28 @@
-
 <!doctype html>
-<html>
-<head><title>Air Quality Dash</title></head>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Air Quality Dash</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
 <body>
   <h1>Air Quality Dashboard</h1>
   <form method="post">
-    <input name="city" placeholder="Enter city name">
+    <input name="city" placeholder="Enter city name" required>
     <button type="submit">Check AQI</button>
   </form>
 
   {% if result %}
-    {% if result.error %}
-      <p style="color:red;">Error: {{ result.error }}</p>
-    {% else %}
-      <p><strong>City:</strong> {{ result.city }}</p>
-      <p><strong>AQI:</strong> {{ result.aqi }}</p>
-      <p><strong>Main Pollutant:</strong> {{ result.pollutant }}</p>
-      <p><strong>Time:</strong> {{ result.time }}</p>
-    {% endif %}
+    <div class="result">
+      {% if result.error %}
+        <p style="color:red;">Error: {{ result.error }}</p>
+      {% else %}
+        <p><strong>City:</strong> {{ result.city }}</p>
+        <p><strong>AQI:</strong> {{ result.aqi }}</p>
+        <p><strong>Main Pollutant:</strong> {{ result.pollutant }}</p>
+        <p><strong>Time:</strong> {{ result.time }}</p>
+      {% endif %}
+    </div>
   {% endif %}
 </body>
 </html>

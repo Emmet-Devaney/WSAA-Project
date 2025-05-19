@@ -1,11 +1,11 @@
-
 from flask import Flask
 import os
 
 def create_app():
     app = Flask(
         __name__,
-        template_folder=os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "templates")) # exact location needs to be specified
+        template_folder="../templates",
+        static_folder="../static"
     )
 
     from .routes import bp as core_bp
