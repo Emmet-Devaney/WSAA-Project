@@ -76,3 +76,12 @@ python cli_lookup.py
 - `style.css` adds padding, fonts, and better layout
 
 
+## Web Station Search
+
+The app now includes a second route `/station-search` that allows users to look up nearby stations directly in the browser.
+
+## New Route
+- `/station-search`: Enter a keyword, view matching stations and AQI
+
+## New Files
+- `templates/station_search.html`

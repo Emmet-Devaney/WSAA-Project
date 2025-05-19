@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Station Search</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<a href="/" style="display: inline-block; margin-top: 1rem;">
+  ⬅️ Back to AQI Lookup
+</a>
+<body>
+  <h1>Station Search</h1>
+
+  <form method="post">
+    <input name="query" placeholder="Enter city or station name" required>
+    <button type="submit">Search</button>
+  </form>
+
+  {% if results %}
+    <h2>Results:</h2>
+    <ul>
+    {% for r in results %}
+      <li>
+        {% if r.error %}
+          <span style="color: red;">Error: {{ r.error }}</span>
+        {% else %}
+          📍 <strong>{{ r.name }}</strong> (ID: {{ r.id }}) – AQI: {{ r.aqi }}
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+</body>
+</html>
