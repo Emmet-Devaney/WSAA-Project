@@ -13,7 +13,10 @@ def create_app():
         static_folder=os.path.join(os.path.dirname(__file__), "..", "static")
     )
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///local.db"
+    #app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///local.db"
+    app.config["SQLALCHEMY_DATABASE_URI"] = (
+        "sqlite:////home/EmmDev/air-quality-dash/instance/local.db"
+    )
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
     # Initialize extensions
