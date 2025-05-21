@@ -25,4 +25,3 @@ def station_search():
         if query:
             stations = search_stations(query)
     return render_template("station_search.html", results=stations)
-

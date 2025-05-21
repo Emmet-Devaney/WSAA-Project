@@ -76,6 +76,8 @@ python cli_lookup.py
 - `style.css` adds padding, fonts, and better layout
 
 
+
+
 ## Web Station Search
 
 The app now includes a second route `/station-search` that allows users to look up nearby stations directly in the browser.
@@ -85,3 +87,26 @@ The app now includes a second route `/station-search` that allows users to look 
 
 ## New Files
 - `templates/station_search.html`
+
+
+
+# Background Jobs & Database Models
+
+- **New Models Added**  
+  Introduced SQLAlchemy models for persistent AQI data:
+  - `city.py` – defines a `City` model representing locations.
+  - `aqi_snapshot.py` – defines `AQISnapshot`, storing hourly AQI readings tied to a city.
+
+- **Database Integration (Flask-Migrate)**  
+  Flask-Migrate is set up to track and apply schema changes using Alembic.  
+  To apply migrations:
+
+  ```bash
+  flask db init        
+  flask db migrate -m "initial schema"
+  flask db upgrade
+  ```
+
+- **Background Scheduler**  
+
+scheduler.py uses APScheduler to fetch AQI data for saved cities at intervals of an and stores snapshots to the database.

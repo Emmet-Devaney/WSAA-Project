@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <a href="/" style="display: inline-block; margin-top: 1rem;">
-  ⬅️ Back to AQI Lookup
+   Back to AQI Lookup
 </a>
 <body>
   <h1>Station Search</h1>
@@ -24,7 +24,7 @@
         {% if r.error %}
           <span style="color: red;">Error: {{ r.error }}</span>
         {% else %}
-          📍 <strong>{{ r.name }}</strong> (ID: {{ r.id }}) – AQI: {{ r.aqi }}
+           <strong>{{ r.name }}</strong> (ID: {{ r.id }}) - AQI: {{ r.aqi }}
         {% endif %}
       </li>
     {% endfor %}
