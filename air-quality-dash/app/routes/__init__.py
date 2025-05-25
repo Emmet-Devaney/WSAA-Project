@@ -7,9 +7,9 @@ bp = Blueprint("core", __name__)
 def index():
     result = None
     if request.method == "POST":
-        city = request.form.get("city", "").strip()
-        if city:
-            result = fetch_aqi(city)
+        query = request.form.get("query", "").strip()
+        if query:
+            result = fetch_aqi(query)
     return render_template("index.html", result=result)
 
 @bp.get("/search")
