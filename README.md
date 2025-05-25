@@ -99,7 +99,8 @@ air-quality-dash/
 │   └── station_search.html
 │
 ├── static/css/style.css     # styling
-├── instance/                # local.db lives here
+├── instance/                # local.db lives here. Added automatically.
+├── migrations/              # added automatically
 ├── .env                     # WAQI_API_TOKEN
 ├── .gitignore                
 ├── requirements.txt         # necessary imports
