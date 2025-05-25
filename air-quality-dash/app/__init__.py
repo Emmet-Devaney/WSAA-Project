@@ -13,11 +13,25 @@ def create_app():
         static_folder=os.path.join(os.path.dirname(__file__), "..", "static")
     )
 
-    #app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///local.db"
-    app.config["SQLALCHEMY_DATABASE_URI"] = (
-        "sqlite:////home/EmmDev/air-quality-dash/instance/local.db"
-    )
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///local.db"
+    #app.config["SQLALCHEMY_DATABASE_URI"] = (
+        #"sqlite:////home/EmmDev/air-quality-dash/instance/local.db"
+    #)
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+    def aqi_band(value):
+        try:
+            v = int(value)
+        except (TypeError, ValueError):
+            return "unknown"
+        if v <= 50:   return "good"
+        if v <= 100:  return "moderate"
+        if v <= 150:  return "usg"
+        if v <= 200:  return "unhealthy"
+        if v <= 300:  return "very-unhealthy"
+        return "hazardous"
+
+    app.jinja_env.globals["aqi_band"] = aqi_band
 
     # Initialize extensions
     db.init_app(app)
@@ -36,6 +50,7 @@ def create_app():
     from app.models import city, aqi_snapshot
 
     return app
+
 
 
 app = create_app()

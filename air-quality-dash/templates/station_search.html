@@ -16,19 +16,24 @@
     <button type="submit">Search</button>
   </form>
 
+
+  
+
   {% if results %}
     <h2>Results:</h2>
-    <ul>
-    {% for r in results %}
-      <li>
-        {% if r.error %}
-          <span style="color: red;">Error: {{ r.error }}</span>
-        {% else %}
-           <strong>{{ r.name }}</strong> (ID: {{ r.id }}) - AQI: {{ r.aqi }}
-        {% endif %}
-      </li>
-    {% endfor %}
-    </ul>
+      <ul>
+      {% for r in results %}
+        <li>
+          {% if r.error %}
+            <span style="color: red;">Error: {{ r.error }}</span>
+          {% else %}
+            <strong>{{ r.name }}</strong> (ID: {{ r.id }})
+            – AQI:
+            <span class="aqi-badge {{ aqi_band(r.aqi) }}">{{ r.aqi }}</span>
+          {% endif %}
+        </li>
+      {% endfor %}
+      </ul>
   {% endif %}
 </body>
 </html>

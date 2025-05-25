@@ -12,21 +12,75 @@
 <body>
   <h1>Air Quality Dashboard</h1>
   <form method="post">
-    <input name="city" placeholder="Enter city name" required>
+    <input name="query" placeholder="Enter City Name or Station ID" required>
     <button type="submit">Check AQI</button>
   </form>
 
   {% if result %}
-    <div class="result">
+    {% set band = aqi_band(result.aqi) if not result.error else '' %}
+
+    <div class="result-card {{ band }}">
       {% if result.error %}
-        <p style="color:red;">Error: {{ result.error }}</p>
+        <p class="error-msg">Error: {{ result.error }}</p>
       {% else %}
-        <p><strong>City:</strong> {{ result.city }}</p>
-        <p><strong>AQI:</strong> {{ result.aqi }}</p>
-        <p><strong>Main Pollutant:</strong> {{ result.pollutant }}</p>
-        <p><strong>Time:</strong> {{ result.time }}</p>
+        <h2 class="city">{{ result.city }}</h2>
+
+        <p class="aqi-line">
+          <span class="label">AQI:</span>
+          <span class="value aqi-badge {{ band }}">{{ result.aqi }}</span>
+        </p>
+
+        <p class="pollutant-line">
+          <span class="label">Main Pollutant:</span>
+          <span class="value">{{ result.pollutant|upper }}</span>
+        </p>
+
+        <p class="time-line">
+          <span class="label">Time:</span>
+          <span class="value">{{ result.time }}</span>
+        </p>
       {% endif %}
     </div>
   {% endif %}
+
 </body>
-</html>
+
+
+<!--  add just under the closing </form>  -->
+<hr>
+
+<section class="info-cards">
+
+  <!-- AQI EXPLANATION -->
+  <div class="card">
+    <h2>What does the AQI number mean?</h2>
+    <p>
+      The <strong>Air-Quality Index (AQI)</strong> converts multiple pollutant
+      concentrations into a single scale from 0&nbsp;to&nbsp;500
+      - lower is cleaner air:
+    </p>
+    <ul class="aqi-bands">
+      <li class="good">0-50  Good - air quality poses little or no risk</li>
+      <li class="moderate">51-100  Moderate - acceptable for most</li>
+      <li class="usg">101-150  Unhealthy for Sensitive Groups</li>
+      <li class="unhealthy">151-200  Unhealthy - everyone may feel effects</li>
+      <li class="very-unhealthy">201-300  Very Unhealthy - health alert</li>
+      <li class="hazardous">301+  Hazardous - emergency conditions</li>
+    </ul>
+  </div>
+
+  <!-- POLLUTANT GLOSSARY -->
+  <div class="card">
+    <h2>Pollutants you might see</h2>
+    <ul class="pollutants">
+      <li><strong>PM<sub>2.5</sub></strong> - fine particles &lt; 2.5 µm that penetrate deep into lungs</li>
+      <li><strong>PM<sub>10</sub></strong> - coarse particles &lt; 10 µm (dust, pollen)</li>
+      <li><strong>O<sub>3</sub></strong> - ground-level ozone, major ingredient of smog</li>
+      <li><strong>NO<sub>2</sub></strong> - nitrogen dioxide, produced by traffic &amp; industry</li>
+      <li><strong>SO<sub>2</sub></strong> - sulfur dioxide, mainly from burning coal / oil</li>
+      <li><strong>CO</strong> - carbon monoxide, colourless gas from incomplete combustion</li>
+    </ul>
+  </div>
+
+</section>
+

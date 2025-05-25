@@ -1,4 +1,3 @@
-# app/scheduler.py
 from apscheduler.schedulers.background import BackgroundScheduler
 from app.models.city import City
 from app.models.aqi_snapshot import AqiSnapshot
@@ -23,4 +22,4 @@ def init_scheduler(app):
     sched = BackgroundScheduler(timezone="UTC")
     sched.add_job(_refresh_all, "interval", hours=3)
     sched.start()
-    app.logger.info("✔ APScheduler started")
+    app.logger.info("APScheduler started")

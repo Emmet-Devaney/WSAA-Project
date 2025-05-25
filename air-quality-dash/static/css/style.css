@@ -19,3 +19,80 @@ form {
     border-radius: 5px;
 }
 
+/* info card layout */
+.info-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.card {
+  flex: 1 1 300px;
+  padding: 1rem 1.25rem;
+  background: #f8f9fa;          /* light grey */
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.1);
+}
+
+/* AQI colour bars */
+.aqi-bands li { margin: .25rem 0; padding-left: .5rem; }
+.good            { background:#00996620; border-left:8px solid #009966; }
+.moderate        { background:#ffde3320; border-left:8px solid #ffde33; }
+.usg             { background:#ff993320; border-left:8px solid #ff9933; }
+.unhealthy       { background:#cc003320; border-left:8px solid #cc0033; }
+.very-unhealthy  { background:#66009920; border-left:8px solid #660099; }
+.hazardous       { background:#7e002320; border-left:8px solid #7e0023; }
+
+/* pollutant list */
+.pollutants li { margin: .3rem 0; }
+
+.aqi-badge {
+  padding: .2rem .5rem;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 600;
+}
+.aqi-badge.good            { background:#009966; }
+.aqi-badge.moderate        { background:#ffde33; color:#333; }
+.aqi-badge.usg             { background:#ff9933; }
+.aqi-badge.unhealthy       { background:#cc0033; }
+.aqi-badge.very-unhealthy  { background:#660099; }
+.aqi-badge.hazardous       { background:#7e0023; }
+
+
+.result-card {
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  margin-top: 1.25rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  background: #f9f9f9;
+  border-left: 8px solid transparent;       /* coloured by band */
+}
+
+.result-card .city { margin: .2rem 0 .6rem; font-size: 1.6rem; }
+.result-card .label { font-weight: 600; }
+.result-card .value { margin-left: .3rem; }
+.error-msg { color: #c0392b; font-weight: 600; }
+
+/* band-specific colours for card + badge  */
+.result-card.good            { border-color:#009966; background:#00996615; }
+.result-card.moderate        { border-color:#ffde33; background:#ffde3320; }
+.result-card.usg             { border-color:#ff9933; background:#ff993320; }
+.result-card.unhealthy       { border-color:#cc0033; background:#cc003320; }
+.result-card.very-unhealthy  { border-color:#660099; background:#66009920; }
+.result-card.hazardous       { border-color:#7e0023; background:#7e002320; }
+
+/* small AQI badge reused across pages */
+.aqi-badge {
+  padding: .15rem .5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  color: #fff;
+}
+.aqi-badge.good            { background:#009966; }
+.aqi-badge.moderate        { background:#ffde33; color:#333; }
+.aqi-badge.usg             { background:#ff9933; }
+.aqi-badge.unhealthy       { background:#cc0033; }
+.aqi-badge.very-unhealthy  { background:#660099; }
+.aqi-badge.hazardous       { background:#7e0023; }
