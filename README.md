@@ -60,8 +60,7 @@ venv\Scripts\activate
 #install required imports on venv
 pip install -r requirements.txt
 
-# Create writable instance folder and .env
-mkdir instance
+# Create .env folder with API key
 echo WAQI_API_TOKEN=your_token_here > .env
 
 # Initialise the DB
